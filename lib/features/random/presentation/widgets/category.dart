@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 class RandomCategory extends StatelessWidget {
@@ -23,10 +24,10 @@ class RandomCategory extends StatelessWidget {
         ),
         child: Text(
           category,
-          style: TextStyle(
-              color: Colors.black,
-              fontSize: 0.3.dp,
-              fontWeight: FontWeight.bold),
+          style: GoogleFonts.jost(
+            fontWeight: FontWeight.w800,
+            fontSize: 0.3.dp,
+          ),
         ),
       ),
     );

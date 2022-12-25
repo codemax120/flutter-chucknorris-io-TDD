@@ -113,10 +113,9 @@ class _RandomChuckNorrisScreenState extends State<RandomChuckNorrisScreen> {
       children: [
         Text(
           "Categories",
-          style: TextStyle(
-            color: Colors.black,
+          style: GoogleFonts.jost(
+            fontWeight: FontWeight.w800,
             fontSize: 0.3.dp,
-            fontWeight: FontWeight.bold,
           ),
         ),
         SizedBox(
