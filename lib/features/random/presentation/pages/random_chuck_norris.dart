@@ -1,6 +1,7 @@
 import 'package:chuck_norris_io/core/injection/injection_container.dart';
 import 'package:chuck_norris_io/features/random/domain/entities/random_entitie.dart';
 import 'package:chuck_norris_io/features/random/presentation/bloc/random_bloc.dart';
+import 'package:chuck_norris_io/features/random/presentation/widgets/category.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -28,10 +29,10 @@ class _RandomChuckNorrisScreenState extends State<RandomChuckNorrisScreen> {
     categories: [],
   );
 
+  final randomBloc = getIt<RandomBloc>();
+
   @override
   Widget build(BuildContext context) {
-    final randomBloc = getIt<RandomBloc>();
-
     return Scaffold(
       backgroundColor: Colors.white,
       body: BlocProvider<RandomBloc>(
@@ -49,21 +50,20 @@ class _RandomChuckNorrisScreenState extends State<RandomChuckNorrisScreen> {
           },
           builder: (context, state) {
             return SafeArea(
-                child: state is LoadingGetRandomState
-                    ? _loading()
-                    : _principalBody());
+              child: _principalBody(state),
+            );
           },
         ),
       ),
     );
   }
 
-  Widget _principalBody() {
+  Widget _principalBody(RandomState state) {
     return ListView(
       padding: EdgeInsets.symmetric(horizontal: 10.w),
       children: [
         SizedBox(
-          height: 10.h,
+          height: 5.h,
         ),
         Image.network(
           "https://avatars.githubusercontent.com/u/17794049?s=280&v=4",
@@ -71,7 +71,26 @@ class _RandomChuckNorrisScreenState extends State<RandomChuckNorrisScreen> {
           height: 20.h,
         ),
         SizedBox(
-          height: 10.h,
+          height: 5.h,
+        ),
+        Visibility(
+          visible: state is LoadingGetRandomState,
+          child: _loading(),
+        ),
+        Visibility(
+          visible: state is! LoadingGetRandomState,
+          child: _contentBody(),
+        ),
+      ],
+    );
+  }
+
+  Widget _contentBody() {
+    return Column(
+      children: [
+        Visibility(
+          visible: randomEntity.categories.isNotEmpty,
+          child: _categories(),
         ),
         Text(
           randomEntity.value,
@@ -82,9 +101,53 @@ class _RandomChuckNorrisScreenState extends State<RandomChuckNorrisScreen> {
           ),
         ),
         SizedBox(
-          height: 25.h,
+          height: 5.h,
+        ),
+        _buttonRandom(),
+      ],
+    );
+  }
+
+  Widget _categories() {
+    return Column(
+      children: [
+        Text(
+          "Categories",
+          style: TextStyle(
+            color: Colors.black,
+            fontSize: 0.3.dp,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        SizedBox(
+          height: 2.h,
+        ),
+        Row(
+          children: List.generate(
+            randomEntity.categories.length,
+            (index) {
+              String category = randomEntity.categories[index];
+              return RandomCategory(category: category);
+            },
+          ),
+        ),
+        Divider(
+          color: Colors.black45,
+          height: 5.h,
         ),
       ],
+    );
+  }
+
+  Widget _buttonRandom() {
+    return Container(
+      margin: EdgeInsets.only(bottom: 10.h),
+      child: OutlinedButton(
+        onPressed: () {
+          randomBloc.add(const GetRandomEvent());
+        },
+        child: const Text('Try again'),
+      ),
     );
   }
 
