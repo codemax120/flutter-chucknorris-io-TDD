@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  initAuthDependecies();
+  initDependecies();
   await initDependencies();
   runApp(const MyApp());
 }

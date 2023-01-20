@@ -10,7 +10,7 @@ import 'package:get_it/get_it.dart';
 
 final getIt = GetIt.instance;
 
-void initAuthDependecies() {
+void initDependecies() {
   // Network Handler
   getIt.registerLazySingleton<NetworkInfoRepository>(
     () => NetworkInfoRepositoryImpl(),
