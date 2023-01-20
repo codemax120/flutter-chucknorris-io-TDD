@@ -1,4 +1,4 @@
-# chuck_norris_io
+# Chuck Norris IO App
 
 A new Flutter project.
 
