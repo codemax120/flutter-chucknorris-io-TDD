@@ -44,7 +44,7 @@ All of this is, well, a bit abstract (pun intended). Also, while the essence of 
 
 To make things clear and Flutter-specific, let me introduce you to Reso Coder's Flutter Clean Architecture Proposal™ to demonstrate something, dare I say, more important than the dependency flow - data & call flow.<br>
 
-Of course, this is only a high-level overview which may or may not tell you much, depending on your previous experience. We will dissect and apply this diagram to our Number Trivia App in a short while.
+Of course, this is only a high-level overview which may or may not tell you much, depending on your previous experience. We will dissect and apply this diagram to our Random ChuckNorris App in a short while.
 <br><br><br>
 
 <center><img src="https://i0.wp.com/resocoder.com/wp-content/uploads/2019/08/Clean-Architecture-Flutter-Diagram.png?w=556&ssl=1" width=50%></img></center>
