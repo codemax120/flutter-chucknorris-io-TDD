@@ -12,6 +12,9 @@ personnel, in order to teach how to build clean, functional and scalable archite
 
 - Reference Documentation [Reso Coder](https://resocoder.com/2019/08/27/flutter-tdd-clean-architecture-course-1-explanation-project-structure/#t-1674365193501)
 
+
+- ChuckNorris App: [Demo](https://www.screencast.com/t/JNFFsC4182a)
+
 ---
 
 <br>
@@ -24,6 +27,10 @@ Engine • revision 3efdf03e73 <br>
 Tools • Dart 2.18.0 • DevTools 2.15.0
 
 <br>
+
+## Demo Chucknorris App
+
+<video src="https://www.screencast.com/t/JNFFsC4182a"> </video>
 
 # TDD Clean Code Arquitecture
 
