@@ -1,8 +1,6 @@
-import 'dart:convert';
-
 import 'package:chuck_norris_io/core/network/server_api_client.dart';
 import 'package:chuck_norris_io/features/random/data/datasources/random_datasource.dart';
-import 'package:chuck_norris_io/features/random/data/models/random.dart';
+import 'package:http/http.dart';
 
 class RandomClientImpl implements RandomClient {
   final ServerApiClient apiClient;
@@ -12,8 +10,8 @@ class RandomClientImpl implements RandomClient {
   });
 
   @override
-  Future<RandomModel> getRandom() async {
+  Future<Response> getRandom() async {
     final response = await apiClient.get('/jokes/random');
-    return RandomModel.fromJson(jsonDecode(response.body));
+    return response;
   }
 }

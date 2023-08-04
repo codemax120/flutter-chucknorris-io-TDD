@@ -30,7 +30,7 @@ Route<dynamic> getNamedPage(RouteSettings routeSettings) {
     default:
       builder = (context) => const Material(
             child: Center(
-              child: Text("Todavía no se ha aplicado."),
+              child: Text("Not ready yet!"),
             ),
           );
   }

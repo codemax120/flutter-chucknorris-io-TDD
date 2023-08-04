@@ -10,7 +10,7 @@ class InitGetRandomState extends RandomState {
   List<Object?> get props => [];
 }
 
-class LoadingGetRandomState extends RandomState {
+class LoadingState extends RandomState {
   @override
   List<Object?> get props => [];
 }
@@ -31,25 +31,5 @@ class SuccessGetRandomState extends RandomState {
 class FailedGetRandomState extends RandomState {
   @override
   List<Object?> get props => [];
-}
-
-class GetRandomState extends RandomState {
-  final RandomEntity randomEntity;
-
-  const GetRandomState({
-    required this.randomEntity,
-  });
-
-  @override
-  List<Object?> get props => [
-        randomEntity,
-      ];
-
-  @override
-  String toString() {
-    return ''' 
-      Random State: ${randomEntity.toString()}
-      ''';
-  }
 }
 /// -----------------------------------/// -----------------------------------/// -----------------------------------/// -----------------------------------

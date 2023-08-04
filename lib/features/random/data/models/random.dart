@@ -12,15 +12,6 @@ class RandomModel extends RandomEntity {
   });
 
   factory RandomModel.fromJson(Map<String, dynamic> json) {
-    List<String> categories = [];
-
-    if (json.containsKey('categories')) {
-      List<dynamic> inconmingCategories = json['categories'] as List;
-      for (var element in inconmingCategories) {
-        categories.add(element);
-      }
-    }
-
     return RandomModel(
       id: json['id'] ?? '',
       url: json['url'] ?? '',
@@ -28,7 +19,9 @@ class RandomModel extends RandomEntity {
       iconUrl: json['icon_url'] ?? '',
       createdAt: json['created_at'] ?? '',
       updatedAt: json['updated_at'] ?? '',
-      categories: categories,
+      categories: (json['categories'] as List<dynamic>)
+          .map((e) => e.toString())
+          .toList(),
     );
   }
 }

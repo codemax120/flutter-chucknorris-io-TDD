@@ -14,16 +14,16 @@ class RandomBloc extends Bloc<RandomEvent, RandomState> {
     required this.getRandomUseCase,
   }) : super(InitGetRandomState()) {
     on<GetRandomEvent>((event, emit) async {
-      emit(await _getRandom(event: event, emit: emit));
+      await _getRandom(event: event, emit: emit);
     });
   }
 
   /// This method getRandom balance from the stream
-  Future<GetRandomState> _getRandom({
+  Future<void> _getRandom({
     required GetRandomEvent event,
     required Emitter<RandomState> emit,
   }) async {
-    emit(LoadingGetRandomState());
+    emit(LoadingState());
 
     final result = await getRandomUseCase(
       const ParamsUseCaseGetRandom(),
@@ -32,24 +32,11 @@ class RandomBloc extends Bloc<RandomEvent, RandomState> {
     return result.fold(
       (l) {
         emit(FailedGetRandomState());
-        emit(InitGetRandomState());
-        return const GetRandomState(
-          randomEntity: RandomEntity(
-            id: "",
-            url: "",
-            value: "",
-            iconUrl: "",
-            createdAt: "",
-            updatedAt: "",
-            categories: [],
-          ),
-        );
       },
       (resp) {
         emit(
           SuccessGetRandomState(randomEntity: resp.response),
         );
-        return GetRandomState(randomEntity: resp.response);
       },
     );
   }

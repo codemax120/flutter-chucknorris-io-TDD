@@ -1,5 +1,5 @@
-import 'package:chuck_norris_io/features/random/data/models/random.dart';
+import 'package:http/http.dart';
 
 abstract class RandomClient {
-  Future<RandomModel> getRandom();
+  Future<Response> getRandom();
 }

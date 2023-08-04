@@ -19,33 +19,26 @@ class RandomChuckNorrisScreen extends StatefulWidget {
 }
 
 class _RandomChuckNorrisScreenState extends State<RandomChuckNorrisScreen> {
-  RandomEntity randomEntity = const RandomEntity(
-    id: "",
-    url: "",
-    value: "",
-    iconUrl: "",
-    createdAt: "",
-    updatedAt: "",
-    categories: [],
-  );
+  RandomEntity randomEntity = RandomEntity.empty();
 
   final randomBloc = getIt<RandomBloc>();
+
+  @override
+  void initState() {
+    randomBloc.add(const GetRandomEvent());
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: BlocProvider<RandomBloc>(
-        create: (context) {
-          randomBloc.add(const GetRandomEvent());
-          return randomBloc;
-        },
+      body: BlocProvider.value(
+        value: randomBloc,
         child: BlocConsumer<RandomBloc, RandomState>(
           listener: (context, state) {
             if (state is SuccessGetRandomState) {
-              setState(() {
-                randomEntity = state.randomEntity;
-              });
+              randomEntity = state.randomEntity;
             }
           },
           builder: (context, state) {
@@ -74,11 +67,11 @@ class _RandomChuckNorrisScreenState extends State<RandomChuckNorrisScreen> {
           height: 5.h,
         ),
         Visibility(
-          visible: state is LoadingGetRandomState,
+          visible: state is LoadingState,
           child: _loading(),
         ),
         Visibility(
-          visible: state is! LoadingGetRandomState,
+          visible: state is! LoadingState,
           child: _contentBody(),
         ),
       ],
