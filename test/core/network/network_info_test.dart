@@ -39,13 +39,14 @@ void networkInfoTest() {
   group('NetworkInfoRepositoryImpl', () {
     testWidgets('hasConnection returns true for no connectivity',
         (WidgetTester tester) async {
-      bool hasConnection = true;
+      late bool hasConnection;
       // Configure the integration test, create a MaterialApp
       await tester.pumpWidget(
         MaterialApp(
           home: Builder(
             builder: (context) {
-              final networkInfoRepository = NetworkInfoRepositoryImpl();
+              final networkInfoRepository =
+                  MockNetworkInfoRepositoryConnected();
               return ElevatedButton(
                 onPressed: () async {
                   hasConnection = await networkInfoRepository.hasConnection;
@@ -66,13 +67,14 @@ void networkInfoTest() {
 
     testWidgets('hasConnection returns false for no connectivity',
         (WidgetTester tester) async {
-      bool hasConnection = false;
+      late bool hasConnection;
       // Configure the integration test, create a MaterialApp
       await tester.pumpWidget(
         MaterialApp(
           home: Builder(
             builder: (context) {
-              final networkInfoRepository = NetworkInfoRepositoryImpl();
+              final networkInfoRepository =
+                  MockNetworkInfoRepositoryNoConnected();
               return ElevatedButton(
                 onPressed: () async {
                   hasConnection = await networkInfoRepository.hasConnection;
