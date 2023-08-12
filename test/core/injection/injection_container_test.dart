@@ -26,7 +26,7 @@ void injectionContainerTest() {
 
     setUp(() {
       getIt = GetIt.instance;
-      // Registra las dependencias simuladas (mock)
+      // Records the mock dependencies (mock)
       getIt.registerLazySingleton<NetworkInfoRepository>(
           () => MockNetworkInfoRepository());
       getIt.registerLazySingleton<ServerApiClient>(() => MockServerApiClient());
@@ -43,13 +43,13 @@ void injectionContainerTest() {
       final mockNetworkInfoRepository = getIt<NetworkInfoRepository>();
       final mockServerApiClient = getIt<ServerApiClient>();
 
-      // Asegúrate de que se hayan registrado las dependencias en el nuevo alcance
+      // Make sure that the dependencies have been registered in the new scope.
       expect(mockNetworkInfoRepository.hasConnection, completes);
       expect(getIt<RandomBloc>(), isA<RandomBloc>());
       expect(getIt<GetRandomUseCase>(), isA<GetRandomUseCase>());
       expect(getIt<RandomClient>(), isA<RandomClient>());
       expect(getIt<RandomRepository>(), isA<RandomRepository>());
-      // Verifica que initRandom se haya llamado una vez
+      // Verify that initRandom was called once
       verifyNever(mockServerApiClient.networkInfoRepository);
     });
   });
