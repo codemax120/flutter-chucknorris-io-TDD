@@ -1,6 +1,7 @@
 import 'package:chuck_norris_io/core/injection/injection_container.dart';
 import 'package:chuck_norris_io/features/random/domain/entities/random_entitie.dart';
 import 'package:chuck_norris_io/features/random/presentation/bloc/random_bloc.dart';
+import 'package:chuck_norris_io/features/random/presentation/widgets/categories.dart';
 import 'package:chuck_norris_io/features/random/presentation/widgets/category.dart';
 import 'package:chuck_norris_io/features/random/presentation/widgets/custom_button.dart';
 import 'package:flutter/cupertino.dart';
@@ -86,7 +87,7 @@ class _RandomChuckNorrisScreenState extends State<RandomChuckNorrisScreen> {
       children: [
         Visibility(
           visible: randomEntity.categories.isNotEmpty,
-          child: _categories(),
+          child: Categories(title: 'Categories', list: randomEntity.categories),
         ),
         Text(
           randomEntity.value,
@@ -104,36 +105,6 @@ class _RandomChuckNorrisScreenState extends State<RandomChuckNorrisScreen> {
           callback: () {
             randomBloc.add(const GetRandomEvent());
           },
-        ),
-      ],
-    );
-  }
-
-  Widget _categories() {
-    return Column(
-      children: [
-        Text(
-          "Categories",
-          style: GoogleFonts.jost(
-            fontWeight: FontWeight.w800,
-            fontSize: 0.3.dp,
-          ),
-        ),
-        SizedBox(
-          height: 2.h,
-        ),
-        Row(
-          children: List.generate(
-            randomEntity.categories.length,
-            (index) {
-              String category = randomEntity.categories[index];
-              return RandomCategory(category: category);
-            },
-          ),
-        ),
-        Divider(
-          color: Colors.black45,
-          height: 5.h,
         ),
       ],
     );
