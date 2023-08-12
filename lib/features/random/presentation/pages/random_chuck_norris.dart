@@ -2,7 +2,6 @@ import 'package:chuck_norris_io/core/injection/injection_container.dart';
 import 'package:chuck_norris_io/features/random/domain/entities/random_entitie.dart';
 import 'package:chuck_norris_io/features/random/presentation/bloc/random_bloc.dart';
 import 'package:chuck_norris_io/features/random/presentation/widgets/categories.dart';
-import 'package:chuck_norris_io/features/random/presentation/widgets/category.dart';
 import 'package:chuck_norris_io/features/random/presentation/widgets/custom_button.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';

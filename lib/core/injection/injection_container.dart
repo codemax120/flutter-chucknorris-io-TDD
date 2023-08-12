@@ -7,15 +7,19 @@ final getIt = GetIt.instance;
 
 void initDependecies() {
   // Network Handler
-  getIt.registerLazySingleton<NetworkInfoRepository>(
-    () => NetworkInfoRepositoryImpl(),
-  );
+  if (!getIt.isRegistered<NetworkInfoRepository>()) {
+    getIt.registerLazySingleton<NetworkInfoRepository>(
+      () => NetworkInfoRepositoryImpl(),
+    );
+  }
   // Server API Client
-  getIt.registerLazySingleton(
-    () => ServerApiClient(
-      networkInfoRepository: getIt(),
-    ),
-  );
+  if (!getIt.isRegistered<ServerApiClient>()) {
+    getIt.registerLazySingleton(
+      () => ServerApiClient(
+        networkInfoRepository: getIt(),
+      ),
+    );
+  }
 }
 
 Future<void> initFeaturesDependecies() async {
