@@ -4,7 +4,7 @@ import 'package:flutter_test/flutter_test.dart';
 void serverExceptionTest() {
   group('ServerException', () {
     test('Constructor sets the message correctly', () {
-      const message = 'Test error message';
+      const String message = 'Test error message';
       final exception = ServerException(message: message);
 
       expect(exception.message, message);
