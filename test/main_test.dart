@@ -19,6 +19,7 @@ import 'features/random/data/datasources/random_datasource_test.dart';
 import 'features/random/data/models/random_model_test.dart';
 import 'features/random/data/repositories/random_repository_impl_test.dart';
 import 'features/random/di/dependecy_injection_test.dart';
+import 'features/random/domain/entities/random_entitie_test.dart';
 import 'features/random/domain/repositories/random_repository_test.dart';
 
 void main() {
@@ -47,5 +48,6 @@ void main() {
     randomModelTest();
     randomRepositoryTest();
     randomRepositoryImplTest();
+    randomEntityTest();
   });
 }

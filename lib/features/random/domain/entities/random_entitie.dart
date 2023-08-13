@@ -45,16 +45,13 @@ class RandomEntity extends Equatable {
   @override
   String toString() {
     return ''' 
-   ----- ----- ----- ----- ----- ----- ----- ----- -----
-   Random Object
-   ----- ----- ----- ----- ----- ----- ----- ----- -----
-      Id: $id
-      URL: $url
-      Value: $value
-      Icon URL: $iconUrl
-      Created At: $createdAt
-      Updated At: $updatedAt
-      Categories: ${categories.map((e) => e.toString())}
-   ''';
+        Id: $id
+        URL: $url
+        Value: $value
+        Icon URL: $iconUrl
+        Created At: $createdAt
+        Updated At: $updatedAt
+        Categories: ${categories.map((e) => e.toString()).toList()}
+        ''';
   }
 }
