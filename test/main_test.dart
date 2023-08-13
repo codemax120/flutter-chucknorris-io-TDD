@@ -17,6 +17,7 @@ import 'core/usecases/usecase_test.dart';
 import 'features/random/data/datasources/random_datasource_impl_test.dart';
 import 'features/random/data/datasources/random_datasource_test.dart';
 import 'features/random/data/models/random_model_test.dart';
+import 'features/random/data/repositories/random_repository_impl_test.dart';
 import 'features/random/di/dependecy_injection_test.dart';
 
 void main() {
@@ -43,5 +44,6 @@ void main() {
     randomDataSourceTest();
     randomDataSourceImplTest();
     randomModelTest();
+    randomRepositoryImplTest();
   });
 }
