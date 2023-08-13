@@ -7,16 +7,18 @@
 
 import 'package:chuck_norris_io/core/injection/injection_container.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:mockito/annotations.dart';
 
 import 'core/injection/injection_container_test.dart';
 import 'core/network/exception_test.dart';
 import 'core/network/failure_test.dart';
 import 'core/network/network_info_test.dart';
+import 'core/usecases/usecase_test.dart';
 import 'features/random/di/dependecy_injection_test.dart';
+import 'package:http/http.dart' as http;
 
+@GenerateMocks([http.Client])
 void main() {
-  TestWidgetsFlutterBinding.ensureInitialized();
-
   setUp(() async {
     initDependecies();
     await initFeaturesDependecies();
@@ -26,6 +28,7 @@ void main() {
     serverExceptionTest();
     failureTest();
     networkInfoTest();
+    usecaseTest();
   });
 
   group('Random feature tests', () {
