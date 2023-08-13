@@ -4,7 +4,6 @@ import 'package:chuck_norris_io/core/injection/injection_container.dart';
 import 'package:chuck_norris_io/core/network/failure.dart';
 import 'package:chuck_norris_io/features/random/data/datasources/random_datasource.dart';
 import 'package:chuck_norris_io/features/random/data/models/random.dart';
-import 'package:chuck_norris_io/features/random/domain/entities/random_entitie.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:http/http.dart';
