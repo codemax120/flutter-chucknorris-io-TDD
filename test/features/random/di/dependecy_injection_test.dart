@@ -8,9 +8,6 @@ import 'package:flutter_test/flutter_test.dart';
 void dependecyInjectionTest() {
   group('Random feature di layer', () {
     test('registers dependencies correctly', () {
-      // Ejecuta el método que estás probando
-
-      // Asegúrate de que las instancias se hayan registrado correctamente en getIt
       expect(getIt<RandomBloc>(), isA<RandomBloc>());
       expect(getIt<GetRandomUseCase>(), isA<GetRandomUseCase>());
       expect(getIt<RandomClient>(), isA<RandomClient>());
