@@ -15,6 +15,7 @@ import 'core/network/failure_test.dart';
 import 'core/network/network_info_test.dart';
 import 'core/usecases/usecase_test.dart';
 import 'features/random/data/datasources/random_datasource_impl_test.dart';
+import 'features/random/data/datasources/random_datasource_test.dart';
 import 'features/random/di/dependecy_injection_test.dart';
 
 void main() {
@@ -38,6 +39,7 @@ void main() {
 
   group('Random feature tests', () {
     dependecyInjectionTest();
+    randomDataSourceTest();
     randomDataSourceImplTest();
   });
 }

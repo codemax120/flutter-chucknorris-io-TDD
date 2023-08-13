@@ -17,7 +17,7 @@ void randomDataSourceImplTest() {
     randomClient = RandomClientImpl(apiClient: serverApiClient);
   });
 
-  group('datasource test layer', () {
+  group('datasource implement test layer', () {
     test('getRandom should call apiClient.get', () async {
       final interceptor = nock.get("/jokes/random")..reply(200, 'result');
 
