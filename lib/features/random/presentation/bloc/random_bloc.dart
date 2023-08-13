@@ -1,5 +1,6 @@
 // ignore: depend_on_referenced_packages
 import 'package:bloc/bloc.dart';
+import 'package:chuck_norris_io/core/usecases/usecase.dart';
 import 'package:chuck_norris_io/features/random/domain/entities/random_entitie.dart';
 import 'package:chuck_norris_io/features/random/domain/usecases/get_random.dart';
 import 'package:equatable/equatable.dart';
@@ -25,9 +26,7 @@ class RandomBloc extends Bloc<RandomEvent, RandomState> {
   }) async {
     emit(LoadingState());
 
-    final result = await getRandomUseCase(
-      const ParamsUseCaseGetRandom(),
-    );
+    final result = await getRandomUseCase(NoParams());
 
     return result.fold(
       (l) {
@@ -35,7 +34,7 @@ class RandomBloc extends Bloc<RandomEvent, RandomState> {
       },
       (resp) {
         emit(
-          SuccessGetRandomState(randomEntity: resp.response),
+          SuccessGetRandomState(randomEntity: resp),
         );
       },
     );
