@@ -24,6 +24,7 @@ import 'features/random/domain/repositories/random_repository_test.dart';
 import 'features/random/domain/usecases/get_random_test.dart';
 import 'features/random/presentation/bloc/random_bloc_with_bloc_test.dart';
 import 'features/random/presentation/bloc/random_bloc_without_bloc_test.dart';
+import 'features/random/presentation/widgets/category_test.dart';
 import 'features/random/presentation/widgets/custom_button_test.dart';
 
 void main() {
@@ -47,19 +48,44 @@ void main() {
 
   group('Random feature tests', () {
     // di
-    dependecyInjectionTest();
+    group('di', () {
+      dependecyInjectionTest();
+    });
+
     // data
-    randomDataSourceTest();
-    randomDataSourceImplTest();
-    randomModelTest();
-    randomRepositoryTest();
-    randomRepositoryImplTest();
+    group('data', () {
+      group('datasource', () {
+        randomDataSourceTest();
+        randomDataSourceImplTest();
+      });
+      group('models', () {
+        randomModelTest();
+      });
+      group('repository', () {
+        randomRepositoryTest();
+        randomRepositoryImplTest();
+      });
+    });
     // domain
-    randomEntityTest();
-    getRandomUseCaseTest();
+    group('domain', () {
+      group('entities', () {
+        randomEntityTest();
+      });
+      group('usecases', () {
+        getRandomUseCaseTest();
+      });
+    });
     // Presentation
-    randomBlocTestWithPackage();
-    randomBlocTest();
-    customButtonWidgetTest();
+    group('presentation', () {
+      group('bloc', () {
+        randomBlocTestWithPackage();
+        randomBlocTest();
+      });
+
+      group('widgets', () {
+        customButtonWidgetTest();
+        categoryTesteWidget();
+      });
+    });
   });
 }
