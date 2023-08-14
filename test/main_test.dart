@@ -22,6 +22,8 @@ import 'features/random/di/dependecy_injection_test.dart';
 import 'features/random/domain/entities/random_entitie_test.dart';
 import 'features/random/domain/repositories/random_repository_test.dart';
 import 'features/random/domain/usecases/get_random_test.dart';
+import 'features/random/presentation/bloc/random_bloc_with_bloc_test.dart';
+import 'features/random/presentation/bloc/random_bloc_without_bloc_test.dart';
 
 void main() {
   setUpAll(() {
@@ -51,5 +53,7 @@ void main() {
     randomRepositoryImplTest();
     randomEntityTest();
     getRandomUseCaseTest();
+    randomBlocTestWithPackage();
+    randomBlocTest();
   });
 }
