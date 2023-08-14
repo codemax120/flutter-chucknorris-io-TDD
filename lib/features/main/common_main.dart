@@ -30,6 +30,7 @@ class MyApp extends StatelessWidget {
           title: 'ChuckNorris',
           initialRoute: initialRoute,
           onGenerateRoute: getNamedPage,
+          key: const Key('initialRoute'),
         );
       },
     );

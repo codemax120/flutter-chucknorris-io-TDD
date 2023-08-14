@@ -14,6 +14,7 @@ import 'core/network/exception_test.dart';
 import 'core/network/failure_test.dart';
 import 'core/network/network_info_test.dart';
 import 'core/usecases/usecase_test.dart';
+import 'features/main/common_main_test.dart';
 import 'features/random/data/datasources/random_datasource_impl_test.dart';
 import 'features/random/data/datasources/random_datasource_test.dart';
 import 'features/random/data/models/random_model_test.dart';
@@ -87,6 +88,7 @@ void main() {
         customButtonWidgetTest();
         categoryTesteWidget();
         categoriesWidgetTest();
+        commonMainWidgetTest();
       });
     });
   });

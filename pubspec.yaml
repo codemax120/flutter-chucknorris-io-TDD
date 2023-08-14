@@ -59,6 +59,9 @@ dev_dependencies:
   mockito: ^5.4.0 
   nock: ^1.2.2
   bloc_test: ^9.1.4
+  mocktail_image_network: ^1.0.0
+
+
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
