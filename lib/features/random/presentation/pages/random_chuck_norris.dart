@@ -44,68 +44,59 @@ class _RandomChuckNorrisScreenState extends State<RandomChuckNorrisScreen> {
           },
           builder: (context, state) {
             return SafeArea(
-              child: _principalBody(state),
+              child: ListView(
+                padding: EdgeInsets.symmetric(horizontal: 10.w),
+                children: [
+                  SizedBox(
+                    height: 5.h,
+                  ),
+                  Image.network(
+                    "https://avatars.githubusercontent.com/u/17794049?s=280&v=4",
+                    width: 20.w,
+                    height: 20.h,
+                  ),
+                  SizedBox(
+                    height: 5.h,
+                  ),
+                  Visibility(
+                    visible: state is LoadingState,
+                    child: const Center(
+                      child: CupertinoActivityIndicator(),
+                    ),
+                  ),
+                  if (state is! LoadingState)
+                    Column(
+                      children: [
+                        if (randomEntity.categories.isNotEmpty)
+                          Categories(
+                            title: 'Categories',
+                            list: randomEntity.categories,
+                          ),
+                        Text(
+                          randomEntity.value,
+                          textAlign: TextAlign.justify,
+                          style: GoogleFonts.jost(
+                            fontWeight: FontWeight.w800,
+                            fontSize: 0.3.dp,
+                          ),
+                        ),
+                        SizedBox(
+                          height: 5.h,
+                        ),
+                        CustomButton(
+                          title: 'Try again',
+                          callback: () {
+                            randomBloc.add(const GetRandomEvent());
+                          },
+                        ),
+                      ],
+                    ),
+                ],
+              ),
             );
           },
         ),
       ),
-    );
-  }
-
-  Widget _principalBody(RandomState state) {
-    return ListView(
-      padding: EdgeInsets.symmetric(horizontal: 10.w),
-      children: [
-        SizedBox(
-          height: 5.h,
-        ),
-        Image.network(
-          "https://avatars.githubusercontent.com/u/17794049?s=280&v=4",
-          width: 20.w,
-          height: 20.h,
-        ),
-        SizedBox(
-          height: 5.h,
-        ),
-        Visibility(
-          visible: state is LoadingState,
-          child: const Center(
-            child: CupertinoActivityIndicator(),
-          ),
-        ),
-        Visibility(
-          visible: state is! LoadingState,
-          child: _contentBody(),
-        ),
-      ],
-    );
-  }
-
-  Widget _contentBody() {
-    return Column(
-      children: [
-        Visibility(
-          visible: randomEntity.categories.isNotEmpty,
-          child: Categories(title: 'Categories', list: randomEntity.categories),
-        ),
-        Text(
-          randomEntity.value,
-          textAlign: TextAlign.justify,
-          style: GoogleFonts.jost(
-            fontWeight: FontWeight.w800,
-            fontSize: 0.3.dp,
-          ),
-        ),
-        SizedBox(
-          height: 5.h,
-        ),
-        CustomButton(
-          title: 'Try again',
-          callback: () {
-            randomBloc.add(const GetRandomEvent());
-          },
-        ),
-      ],
     );
   }
 }

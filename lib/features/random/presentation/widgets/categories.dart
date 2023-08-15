@@ -8,10 +8,10 @@ class Categories extends StatelessWidget {
   final List<String> list;
 
   const Categories({
-    super.key,
+    Key? key,
     required this.title,
     required this.list,
-  });
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
