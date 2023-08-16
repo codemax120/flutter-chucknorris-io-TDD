@@ -1,4 +1,3 @@
-import 'package:bloc_test/bloc_test.dart';
 import 'package:chuck_norris_io/features/random/domain/entities/random_entitie.dart';
 import 'package:chuck_norris_io/core/usecases/usecase.dart';
 import 'package:chuck_norris_io/core/network/failure.dart';

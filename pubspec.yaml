@@ -60,6 +60,7 @@ dev_dependencies:
   nock: ^1.2.2
   bloc_test: ^9.1.4
   mocktail_image_network: ^1.0.0
+  fast_flutter_driver: ^3.0.0+1
 
 
 
