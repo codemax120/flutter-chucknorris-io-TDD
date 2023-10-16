@@ -42,6 +42,7 @@ void main() {
     await initFeaturesDependecies();
     nock.cleanAll();
   });
+
   group('core tests', () {
     injectionContainerTest();
     serverExceptionTest();

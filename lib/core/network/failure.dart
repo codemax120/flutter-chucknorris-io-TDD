@@ -10,7 +10,5 @@ class ServerFailure extends Failure {
   });
 
   @override
-  List<Object?> get props => [
-        error,
-      ];
+  List<Object?> get props => [error];
 }
